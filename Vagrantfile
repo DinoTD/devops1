@@ -15,8 +15,7 @@ Vagrant.configure("2") do |config|
   # config.vm.box = "centos/7"
   # config.vm.box = "ubuntu/xenial64"
   config.vm.box = "generic/ubuntu1804"
-  config.vm.provision :shell, inline: 'sudo apt-get update'
-  config.vm.provision :shell, inline: 'sudo apt-get install mysql'
+  
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -50,6 +49,7 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "./", "/vagrant"
   config.vm.synced_folder "./app", "/var/www/html"
+  config.vm.synced_folder "./", "/vagrant"
   
 
   # Provider-specific configuration so you can fine-tune various
@@ -77,4 +77,5 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "scripts/provision.sh"
   config.vm.provision "shell", path: "scripts/startup.sh", run: "always"
+  
 end
